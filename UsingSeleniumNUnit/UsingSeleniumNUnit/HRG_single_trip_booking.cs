@@ -50,8 +50,10 @@ namespace SeleniumTests
             SelectFindATripMenu();
             
             SetPort("from", "FRO");
-            Thread.Sleep(1000);
+              Thread.Sleep(1000);
+           
             SetPort("to", "FRO");
+              Thread.Sleep(1000);
             
             SetPassengers("ADULT", 1);
 
@@ -86,7 +88,8 @@ namespace SeleniumTests
         {
             String selector = "div#" + direction + "Port_chosen";
             driver.FindElement(By.CssSelector(selector)).Click();
-            
+            Thread.Sleep(100);
+
             String portsSelector = selector + " .chosen-results li";
    
             var ports = driver.FindElements(By.CssSelector(portsSelector));
@@ -106,7 +109,8 @@ namespace SeleniumTests
         {
             driver.FindElement(By.CssSelector("span.form-input[data-trigger=booking-cabin-controller]")).Click();
             WaitUntilVisible("li.cabin-action-edit a", 10);
-            
+           // Thread.Sleep(1000);
+
             driver.FindElement(By.CssSelector("li.cabin-action-edit a")).Click();
            
             WaitUntilVisible("div.booking-passenger-selection", 10);
@@ -122,22 +126,25 @@ namespace SeleniumTests
                 while (difference != 0)
                 {
                     buttonRemove.Click();
+                    Thread.Sleep(100);
                     difference = difference - 1;
                 }
             }
             else if (defaultNumber < amount)
             {
                 var difference = amount - defaultNumber;
+                while (difference != 0)
                 {
                     buttonAdd.Click();
+                    Thread.Sleep(100);
                     difference = difference - 1;
                 }
             }
             
             WaitUntilClickable(".button.button-primary.booking-passenger-selection-done", 10);
             driver.FindElement(By.CssSelector(".button.button-primary.booking-passenger-selection-done")).Click();
-            
-            WaitUntilInvisible("div.booking-passenger-selection", 10);
+
+            Thread.Sleep(1000);
             driver.FindElement(By.CssSelector(".button.button-primary.cabin-controller-done")).Click();
             
         }
