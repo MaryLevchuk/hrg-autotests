@@ -50,8 +50,11 @@ namespace SeleniumTests
             SelectFindATripMenu();
             
             SetPort("from", "FRO");
-            
+            Thread.Sleep(1000);
             SetPort("to", "FRO");
+            
+            SetPassengers("ADULT", 1);
+
             Thread.Sleep(5000);
 
             
@@ -62,7 +65,18 @@ namespace SeleniumTests
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeInSeconds));
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(elementSelector)));
         }
-                       
+
+        public void WaitUntilClickable(String elementSelector, Int16 timeInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(elementSelector)));
+        }
+        public void WaitUntilInvisible(String elementSelector, Int16 timeInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeInSeconds));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(elementSelector)));
+        }
+                                       
         public void SelectFindATripMenu() 
         {
             driver.FindElement(By.CssSelector(".booking span.button-text")).Click();
@@ -74,31 +88,64 @@ namespace SeleniumTests
             driver.FindElement(By.CssSelector(selector)).Click();
             
             String portsSelector = selector + " .chosen-results li";
-System.Console.WriteLine(portsSelector);           
+   
             var ports = driver.FindElements(By.CssSelector(portsSelector));
-
-System.Console.WriteLine(direction);           
-
-            foreach (var lPort in ports) 
-            {
-                System.Console.WriteLine(lPort.GetAttribute("textContent"));            
-            }
-
-System.Console.WriteLine("-------------------");
 
             foreach (var localPort in ports)
             {                
                 if (localPort.GetAttribute("textContent").Contains(userSpecifiedPort)) 
                 {
-
-System.Console.WriteLine(localPort.GetAttribute("textContent"));
-System.Console.WriteLine(localPort.Displayed);
-
                     localPort.Click();
                     break;
                 }
             }
-            driver.FindElement(By.CssSelector("h1.header-primary")).Click();
+            WaitUntilInvisible(portsSelector, 10);
+        }
+
+        public void SetPassengers(String type, Int16 amount)
+        {
+            driver.FindElement(By.CssSelector("span.form-input[data-trigger=booking-cabin-controller]")).Click();
+            WaitUntilVisible("li.cabin-action-edit a", 10);
+            
+            driver.FindElement(By.CssSelector("li.cabin-action-edit a")).Click();
+           
+            WaitUntilVisible("div.booking-passenger-selection", 10);
+            var rowSelector = PassengersRowSelector("ADULT");
+            var defaultNumber = Convert.ToInt16(driver.FindElement(By.CssSelector((rowSelector + " span.booking-passenger-selection-item-count").ToString())).GetAttribute("textContent"));
+             
+            IWebElement buttonAdd = driver.FindElement(By.CssSelector((rowSelector + " button.button.button-circle.booking-passenger-selection-item-add").ToString()));
+            IWebElement buttonRemove = driver.FindElement(By.CssSelector((rowSelector + " button.button.button-circle.booking-passenger-selection-item-remove").ToString()));
+   
+            if (defaultNumber > amount) 
+            {
+                var difference = defaultNumber - amount;
+                while (difference != 0)
+                {
+                    buttonRemove.Click();
+                    difference = difference - 1;
+                }
+            }
+            else if (defaultNumber < amount)
+            {
+                var difference = amount - defaultNumber;
+                {
+                    buttonAdd.Click();
+                    difference = difference - 1;
+                }
+            }
+            
+            WaitUntilClickable(".button.button-primary.booking-passenger-selection-done", 10);
+            driver.FindElement(By.CssSelector(".button.button-primary.booking-passenger-selection-done")).Click();
+            
+            WaitUntilInvisible("div.booking-passenger-selection", 10);
+            driver.FindElement(By.CssSelector(".button.button-primary.cabin-controller-done")).Click();
+            
+        }
+
+        public String PassengersRowSelector(String type)
+        {
+            String selector = ".booking-passenger-selection-list.list li[data-passengertype=" + type + "]";
+            return selector;
         }
 
         private bool IsElementPresent(By by)
