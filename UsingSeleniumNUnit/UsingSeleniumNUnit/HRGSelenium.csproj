@@ -72,7 +72,7 @@
   <ItemGroup>
     <Compile Include="GoogleMapsWebDriver.cs" />
     <Compile Include="HRG_single_trip_booking.cs" />
-    <Compile Include="Locators.cs" />
+    <Compile Include="SingleTripHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Choose>

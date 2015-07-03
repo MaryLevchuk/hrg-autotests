@@ -17,3 +17,4 @@ D:\Projects\Selenium.NET\UsingSeleniumNUnit\UsingSeleniumNUnit\bin\Debug\WebDriv
 D:\Projects\Selenium.NET\UsingSeleniumNUnit\UsingSeleniumNUnit\bin\Debug\WebDriver.Support.xml
 D:\Projects\Selenium.NET\UsingSeleniumNUnit\UsingSeleniumNUnit\obj\Debug\UsingSeleniumNUnit.dll
 D:\Projects\Selenium.NET\UsingSeleniumNUnit\UsingSeleniumNUnit\obj\Debug\UsingSeleniumNUnit.pdb
+D:\Projects\Selenium.NET\UsingSeleniumNUnit\UsingSeleniumNUnit\obj\Debug\HRGSelenium.csprojResolveAssemblyReference.cache

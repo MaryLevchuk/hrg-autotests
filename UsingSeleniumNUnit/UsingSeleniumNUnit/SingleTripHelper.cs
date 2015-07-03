@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsingSeleniumNUnit
 {
-    class Locators
+    class SingleTripHelper
     {
 
     }
