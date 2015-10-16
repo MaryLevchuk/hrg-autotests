@@ -8,6 +8,8 @@ using System.Globalization;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using Hurtigruten.Accepptance.Tests;
+using Hurtigruten.Accepptance.Tests.Helper;
 
 
 namespace Hurtigruten.Accepptance.Tests.Helper
@@ -15,40 +17,89 @@ namespace Hurtigruten.Accepptance.Tests.Helper
     public class Filter
     {
         public string FilterName;
-        public string IconCss = ".inspiration-filter-nav-tab-icon";
-        public string TitleCss = ".title";
-        public string OptionsCss = ".form-label.form-label-checkbox";
+        public IWebElement IconItem;
+        public IWebElement TitleItem;
         public List<IWebElement> OptionItems;
-        private IWebDriver driver;
-
-        public Filter(IWebDriver driver, string name)
-        {
-           this.driver = driver;
-           FilterName = name;
-           FindIcon().Click();
-           Thread.Sleep(1000);
-           OptionItems = driver.FindElements(By.CssSelector((OptionsCss + "[for|='" + FilterName + "']"))).ToList();
-           Thread.Sleep(5000);
-        }
         
+        protected IWebDriver driver;
+
+        public Filter(string name)
+        {
+           this.driver = TestSettings.driver;
+           this.FilterName = name;
+
+           this.IconItem = FindIcon();
+
+           this.IconItem.Click();
+           Thread.Sleep(500);
+
+           this.TitleItem = FindTitle();
+           this.OptionItems = FindOptions();
+
+            Thread.Sleep(500);
+        }
+
         public IWebElement FindIcon()
         {
-            return driver.FindElement(By.CssSelector((IconCss + "." + FilterName)));
+            return driver.FindElement(By.CssSelector((Locators.FilterIcon + "." + FilterName)));
         }
         
         public IWebElement FindTitle()
         {
-            return driver.FindElement(By.CssSelector(".nav-tabs.active.has-selected-filters " + TitleCss));
+            return driver.FindElement(By.CssSelector(".nav-tabs.active " + Locators.FilterTitle));
         }
 
-        public void CheckOptions(int[] states)
-        {            
-            for (var i = 0; i <= OptionItems.Count; i++ )
+        public List<IWebElement> FindOptions()
+        {
+            return driver.FindElements(By.CssSelector((Locators.FilterOptions + "[for|='" + FilterName + "']"))).ToList();
+        }
+
+        public void MarkOption(int order_number)
+        {
+            OptionItems[order_number].Click(); Thread.Sleep(500);
+        }
+        
+        public void MarkOptions(int[] states)
+        {
+            for (var i = 0; i < OptionItems.Count; i++ )
             {
                 if (states[i] == 1)
-                { OptionItems[i].Click(); }
+                { MarkOption(i); }
             }
         }
 
+        public string GetIconBackgroudColor()
+        {
+            string color = IconItem.GetCssValue("box-shadow");
+            string[] numbers = color.Split('(')[1].Split(')')[0].Split(',');
+
+            int r = Int32.Parse(numbers[0].Trim());
+            int g = Int32.Parse(numbers[1].Trim());
+            int b = Int32.Parse(numbers[2].Trim());
+
+            String hex = ("#" + r.ToString("X") + g.ToString("X") + b.ToString("X")).ToLower();
+            return hex;
+        }
+
+        public virtual void TurnOn()
+        {
+            this.MarkOption(1);
+            Thread.Sleep(500);
+        }
+
+        public static void TurnOn(params string[] fNames)
+        {
+            foreach (string name in fNames)
+            {
+                new Filter(name).TurnOn(); 
+            }
+        }
+
+        public void ClearAllFilters()
+        {
+            driver.FindElement(By.CssSelector(".grid-filter-clear-all")).Click();
+        }
+
+        
     }
 }
