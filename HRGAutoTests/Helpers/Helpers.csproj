@@ -67,12 +67,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CommonItems\Menu\Menu.cs" />
+    <Compile Include="CommonLocators\CommonLocators.cs" />
     <Compile Include="Inspiration\Filter.cs" />
     <Compile Include="Inspiration\FilterSearch.cs" />
     <Compile Include="Inspiration\InspirationLocators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CommonItems\Footer\" />
     <Folder Include="MyPage\" />
   </ItemGroup>
   <ItemGroup>

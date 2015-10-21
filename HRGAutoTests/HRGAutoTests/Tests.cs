@@ -4,18 +4,23 @@ using OpenQA.Selenium;
 using NUnit.Framework;
 using Helpers.Inspiration;
 using Settings;
+using Pages;
 
 namespace HRGAutotests
 {
     [TestFixture]
-    public class FilterAssertions : TestSettings
+    public class InspirationPage : Page
     {
+
+        public InspirationPage()
+            : base("chrome", "preprod", "inspirationPage")
+        { }
 
         [TestCase("destinations", Result = "#7bc4be")]
         [TestCase("seasons", Result = "#cd6849")]
         [TestCase("attractions", Result = "#7091b8")]
         [TestCase("filter-search", Result = "#383735")]
-        public string FilterBackGroundColor(string name)
+        public string Color_IsChanged_WhenActive(string name)
         {
             Filter.TurnOn("destinations", "seasons", "attractions");
             new FilterSearch().TypeText("q");

@@ -78,6 +78,10 @@
       <Project>{3081ef63-a616-490f-9958-34e4f76f2a51}</Project>
       <Name>Helpers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pages\Pages.csproj">
+      <Project>{d07085ef-7f3b-4705-84ee-85754dd2c074}</Project>
+      <Name>Pages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Settings\Settings.csproj">
       <Project>{f5fe36ff-9c9c-4950-818f-2ed42e6d4e35}</Project>
       <Name>Settings</Name>

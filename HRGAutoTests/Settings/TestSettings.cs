@@ -23,8 +23,8 @@ namespace Settings
         public const string IEXPLORER = "iexplore";
         public const string CHROME = "chrome";
 
-        public string domain = ConfigurationManager.AppSettings["PreProdUrl"];
-        public string inspirationPage;
+        public string environment;   
+        public string page;
 
         public IWebDriver SetBrowser(string browser)
         {
@@ -52,16 +52,17 @@ namespace Settings
             driver.Manage().Window.Maximize();
         }
 
-        public TestSettings()
+        public TestSettings(string driver, string env, string pageName)
         {
-            OpenBrowser(CHROME);
-            this.inspirationPage = this.domain + ConfigurationManager.AppSettings["InspirationPage"];
+            OpenBrowser(driver);
+            this.environment = ConfigurationManager.AppSettings[env];
+            this.page = this.environment + ConfigurationManager.AppSettings[pageName];
         }
         public void OpenPage(string url)
         {
             driver.Navigate().GoToUrl(url);
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".grid-item.wow.zoomIn.wow-animated.animated.animated:nth-child(6)")));
+            
         }
 
 
@@ -69,7 +70,7 @@ namespace Settings
         [TestFixtureSetUp]
         public void InitPage()
         {
-            OpenPage(this.inspirationPage);
+            OpenPage(this.page);
         }
 
         [TestFixtureTearDown]
