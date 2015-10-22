@@ -19,12 +19,8 @@ namespace Helpers
         public static string SocialIconsInscription = ".footer-social-media-title";
         public static string FooterInfoList = ".footer-info-list";
         public static string Copyright = ".footer-info-copyright";
-        public static string FooterLogoListItems = ".footer-logo-list li";
-        public static string FooterArrowUp = ".footer-back-to-top";
-
-
-       
-    
-    
+        public static string LogoListItems = ".footer-logo-list li";
+        public static string ArrowUp = ".footer-back-to-top";
+  
     }
 }

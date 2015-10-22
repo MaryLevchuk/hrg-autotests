@@ -20,7 +20,7 @@ namespace HRGAutotests
         [TestCase("seasons", Result = "#cd6849")]
         [TestCase("attractions", Result = "#7091b8")]
         [TestCase("filter-search", Result = "#383735")]
-        public string Color_IsChanged_WhenActive(string name)
+        public string FilterColor_IsChanged_WhenActive(string name)
         {
             Filter.TurnOn("destinations", "seasons", "attractions");
             new FilterSearch().TypeText("q");
@@ -48,55 +48,27 @@ namespace HRGAutotests
         }
 
 
-        [TestCase(new int[] { 1, 0, 0, 0, 0, 0 }, Result = "Destinations1")]
-        [TestCase(new int[] { 0, 1, 0, 0, 1, 0 }, Result = "Destinations2")]
-        [TestCase(new int[] { 0, 0, 1, 1, 0, 1 }, Result = "Destinations3")]
-        [TestCase(new int[] { 1, 0, 1, 1, 0, 1 }, Result = "Destinations4")]
-        [TestCase(new int[] { 1, 1, 0, 1, 1, 1 }, Result = "Destinations5")]
-        [TestCase(new int[] { 1, 1, 1, 1, 1, 1 }, Result = "Destinations6")]
-        public string DestinationsFilterMarkOptions(int[] states)
+        [TestCase("destinations", 1, 0, 0, 0, 0, 0 , Result = "Destinations1")]
+        [TestCase("destinations", 0, 1, 0, 0, 1, 0 , Result = "Destinations2")]
+        [TestCase("destinations", 0, 0, 1, 1, 0, 1 , Result = "Destinations3")]
+        [TestCase("destinations", 1, 0, 1, 1, 0, 1 , Result = "Destinations4")]
+        [TestCase("destinations", 1, 1, 0, 1, 1, 1 , Result = "Destinations5")]
+        [TestCase("destinations", 1, 1, 1, 1, 1, 1 , Result = "Destinations6")]
+        [TestCase("seasons", 1, 0, 0, 0 , Result = "Seasons1")]
+        [TestCase("seasons", 0, 1, 0, 1 , Result = "Seasons2")]
+        [TestCase("seasons", 1, 0, 1, 1 , Result = "Seasons3")]
+        [TestCase("seasons", 1, 1, 1, 1 , Result = "Seasons4")]
+        [TestCase("attractions", 1, 0, 0, 0, 0, 0, 0 , Result = "Attractions1")]
+        [TestCase("attractions", 0, 1, 0, 0, 0, 1, 0 , Result = "Attractions2")]
+        [TestCase("attractions", 1, 0, 0, 1, 0, 0, 1 , Result = "Attractions3")]
+        [TestCase("attractions", 0, 1, 1, 0, 1, 1, 0 , Result = "Attractions4")]
+        [TestCase("attractions", 1, 0, 1, 1, 1, 0, 1 , Result = "Attractions5")]
+        [TestCase("attractions", 1, 1, 1, 1, 1, 1, 0 , Result = "Attractions6")]
+        [TestCase("attractions", 1, 1, 1, 1, 1, 1, 1 , Result = "Attractions7")]
+
+        public string Options_AreAllowed_ToBeMarked(string filterName, params int[] states)
         {
-            Filter filter = new Filter("destinations");
-            filter.MarkOptions(states);
-            Thread.Sleep(500);
-
-            string title = filter.FindTitle().GetAttribute("innerText");
-            Thread.Sleep(500);
-            filter.ClearAllFilters();
-
-            return title;
-        }
-
-
-        [TestCase(new int[] { 1, 0, 0, 0 }, Result = "Seasons1")]
-        [TestCase(new int[] { 0, 1, 0, 1 }, Result = "Seasons2")]
-        [TestCase(new int[] { 1, 0, 1, 1 }, Result = "Seasons3")]
-        [TestCase(new int[] { 1, 1, 1, 1 }, Result = "Seasons4")]
-        public string SeasonsFilterMarkOptions(int[] states)
-        {
-            Filter filter = new Filter("seasons");
-            filter.MarkOptions(states);
-            Thread.Sleep(500);
-
-            string title = filter.FindTitle().GetAttribute("innerText");
-            Thread.Sleep(500);
-            filter.ClearAllFilters();
-
-            return title;
-        }
-
-        [TestCase(new int[] { 1, 0, 0, 0, 0, 0, 0 }, Result = "Attractions1")]
-        [TestCase(new int[] { 0, 1, 0, 0, 0, 1, 0 }, Result = "Attractions2")]
-        [TestCase(new int[] { 1, 0, 0, 1, 0, 0, 1 }, Result = "Attractions3")]
-        [TestCase(new int[] { 0, 1, 1, 0, 1, 1, 0 }, Result = "Attractions4")]
-        [TestCase(new int[] { 1, 0, 1, 1, 1, 0, 1 }, Result = "Attractions5")]
-        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 0 }, Result = "Attractions6")]
-        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 1 }, Result = "Attractions7")]
-
-
-        public string AttractionsFilterMarkOptions(int[] states)
-        {
-            Filter filter = new Filter("attractions");
+            Filter filter = new Filter(filterName);
             filter.MarkOptions(states);
             Thread.Sleep(500);
 

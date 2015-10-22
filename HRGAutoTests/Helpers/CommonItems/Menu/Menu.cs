@@ -7,11 +7,11 @@ using OpenQA.Selenium;
 using NUnit.Framework;
 using Settings;
 
-namespace Helpers.CommonItems.Menu
+namespace Helpers.CommonItems
 {
-    public class Menu
+    public class Menu : PageObject
     {
-        private IWebDriver driver;
+        //private IWebDriver driver;
         public IWebElement Panel;
         public IWebElement Logo;
         public List<IWebElement> PrimaryItems;
@@ -20,7 +20,7 @@ namespace Helpers.CommonItems.Menu
 
         public Menu()
         {
-            this.driver = TestSettings.driver;
+          //  this.driver = TestSettings.driver;
             this.Panel = FindItem("Panel");
             this.Logo = FindItem("Logo");
             this.PrimaryItems = FindItems("PrimaryItems");
@@ -28,22 +28,42 @@ namespace Helpers.CommonItems.Menu
             this.LanguageSelector = FindItem("LanguageSelector");
         }
         
-        public IWebElement FindItem(string itemName) 
-        {
-            var locator = typeof(CommonLocators).GetField(itemName).GetValue(typeof(CommonLocators));
-            return driver.FindElement(By.CssSelector(locator.ToString())); 
-        }
+        //public string GetMenuField(string field)
+        //{
+        //    string result;
+        //    switch (field)
+        //    {
+        //        case "Panel":
+        //            result = this.Panel.ToString();
+        //            break;
 
-        public List<IWebElement> FindItems(string itemsName) 
-        {
-            var locator = typeof(CommonLocators).GetField(itemsName).GetValue(typeof(CommonLocators));
-            return driver.FindElements(By.CssSelector(locator.ToString())).ToList(); 
-        }
+        //        case "Logo":
+        //            result = this.Logo.ToString();
+        //            break;
 
-        public string GetField(string field)
+        //        case "PrimaryItems":
+        //            result = this.PrimaryItems.Count.ToString();
+        //            break;
+
+        //        case "SecondaryItems":
+        //            result = this.SecondaryItems.Count.ToString();
+        //            break;
+
+        //        case "LanguageSelector":
+        //            result = this.LanguageSelector.ToString();
+        //            break;
+
+        //        default:
+        //            result = null;
+        //            break;
+        //    }
+        //    return result;
+
+        //}
+
+        public string GetMenuField(string field)
         {
-            var locator = typeof(Menu).GetField(field).ToString();
-            return locator;
+            return this.GetType().GetField(field).ToString();
         }
         
     }

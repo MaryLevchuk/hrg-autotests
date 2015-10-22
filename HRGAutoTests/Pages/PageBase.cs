@@ -3,9 +3,10 @@ using System.Text;
 using System.Collections.Generic;
 
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using Settings;
-using Helpers.CommonItems.Menu;
+using Helpers.CommonItems;
 using Helpers;
 
 
@@ -18,37 +19,23 @@ namespace Pages
         public Page(string browser, string env, string pageName) :base(browser, env, pageName)
         {  }
 
+        [TestCase("Panel", Result = true)]
+        [TestCase("Logo", Result = true)]
+        [TestCase("PrimaryItems", Result = true)]
+        [TestCase("SecondaryItems", Result = true)]
+        [TestCase("LanguageSelector", Result = true)]
+        public bool VisibleMenuItems(string itemName)
+        {
+            var result = (IWebElement)new Menu().GetClassField(itemName);
+            //var result = (IWebElement)new Menu().GetClassField(itemName);
+            return result.Displayed;
+        }
+
+        //[TestCase("Panel", Result = false)]
+        //public bool PresentFooterItems(string itemName)
+        //{ 
         
-        [Test]
-        public void Menu_IsPresent()
-        {
-            Assert.IsNotNull(new Menu().Panel);
-        }
-
-        [Test]
-        public void Logo_IsPresent()
-        {
-            Assert.IsNotNull(new Menu().Logo);
-        }
-
-        [Test]
-        public void PrimaryMenuItems_ArePresent()
-        {
-            Assert.GreaterOrEqual(new Menu().PrimaryItems.Count, 5);
-        }
-
-        [Test]
-        public void SecondaryMenuItems_ArePresent()
-        {
-            Assert.GreaterOrEqual(new Menu().SecondaryItems.Count, 6);
-        }
-
-        [Test]
-        public void LanguageSelector_IsPresent()
-        {
-            Assert.IsNotNull(new Menu().LanguageSelector);
-        }
-        
+        //}
         
     }
 }
