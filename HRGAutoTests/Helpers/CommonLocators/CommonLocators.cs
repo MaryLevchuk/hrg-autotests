@@ -16,7 +16,7 @@ namespace Helpers
 
         public static string FooterPanel = ".main-footer";
         public static string SocialIcons = ".icon.icon-only";   //color normal = #f04e4c; when hovered = #fff
-        public static string SocialIconsInscription = ".footer-social-media-title";
+        public static string SocialIconsText = ".footer-social-media-title";
         public static string FooterInfoList = ".footer-info-list";
         public static string Copyright = ".footer-info-copyright";
         public static string LogoListItems = ".footer-logo-list li";

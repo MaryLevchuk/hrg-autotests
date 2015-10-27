@@ -47,7 +47,7 @@ namespace HRGAutotests
             Assert.AreEqual(actualText, "Bergen");
         }
 
-
+        [Explicit]
         [TestCase("destinations", 1, 0, 0, 0, 0, 0 , Result = "Destinations1")]
         [TestCase("destinations", 0, 1, 0, 0, 1, 0 , Result = "Destinations2")]
         [TestCase("destinations", 0, 0, 1, 1, 0, 1 , Result = "Destinations3")]
@@ -65,7 +65,6 @@ namespace HRGAutotests
         [TestCase("attractions", 1, 0, 1, 1, 1, 0, 1 , Result = "Attractions5")]
         [TestCase("attractions", 1, 1, 1, 1, 1, 1, 0 , Result = "Attractions6")]
         [TestCase("attractions", 1, 1, 1, 1, 1, 1, 1 , Result = "Attractions7")]
-
         public string Options_AreAllowed_ToBeMarked(string filterName, params int[] states)
         {
             Filter filter = new Filter(filterName);

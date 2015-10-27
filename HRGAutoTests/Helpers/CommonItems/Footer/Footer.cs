@@ -15,15 +15,21 @@ namespace Helpers.CommonItems
     {
         public IWebElement FooterPanel;
         public List<IWebElement> SocialIcons;
-        public List<IWebElement> SocialIconsInscription;
-        public IWebElement InfoList;
+        public List<IWebElement> SocialIconsText;
+        public IWebElement FooterInfoList;
         public IWebElement Copyright;
-        public List<IWebElement> FooterLogoListItems;
-        public IWebElement FooterArrowUp;
+        public List<IWebElement> LogoListItems;
+        public IWebElement ArrowUp;
 
         public Footer()
         {
-        
+            this.FooterPanel = FindItem("FooterPanel");
+            this.SocialIcons = FindItems("SocialIcons");
+            this.SocialIconsText = FindItems("SocialIconsText");
+            this.FooterInfoList = FindItem("FooterInfoList");
+            this.Copyright = FindItem("Copyright");
+            this.LogoListItems = FindItems("LogoListItems");
+            this.ArrowUp = FindItem("ArrowUp");
         }
     }
 }
