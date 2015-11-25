@@ -21,6 +21,17 @@ namespace Helpers
         public static string Copyright = ".footer-info-copyright";
         public static string LogoListItems = ".footer-logo-list li";
         public static string ArrowUp = ".footer-back-to-top";
-  
+
+        public static string FilterIcon = ".inspiration-filter-nav-tab-icon";
+        public static string FilterTitle = ".title";
+        public static string FilterOptions = ".form-label.form-label-checkbox";
+
+        public static string ClearAllFiltersBtn = ".grid-filter-clear-all";
+
+        public static string SearchInput = ".filter-search #inspiration-search";
+        public static string SearchBtn = ".filter-search-button";
+
+        public static string FirstArticle = ".grid-item.wow.zoomIn.wow-animated.animated.animated";
+
     }
 }

@@ -73,7 +73,6 @@
     <Compile Include="CommonLocators\CommonLocators.cs" />
     <Compile Include="Inspiration\Filter.cs" />
     <Compile Include="Inspiration\FilterSearch.cs" />
-    <Compile Include="Inspiration\InspirationLocators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

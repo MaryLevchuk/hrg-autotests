@@ -56,7 +56,11 @@ namespace Settings
         {
             OpenBrowser(driver);
             this.environment = ConfigurationManager.AppSettings[env];
-            this.page = this.environment + ConfigurationManager.AppSettings[pageName];
+            if (pageName.Contains("homePage"))
+            { page = environment; }
+            else
+            { this.page = this.environment + ConfigurationManager.AppSettings[pageName]; }
+            
         }
         public void OpenPage(string url)
         {
