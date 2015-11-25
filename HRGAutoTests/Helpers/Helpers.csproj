@@ -74,6 +74,10 @@
     <Compile Include="Inspiration\Filter.cs" />
     <Compile Include="Inspiration\FilterSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Steps\step1.cs" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MyPage\" />

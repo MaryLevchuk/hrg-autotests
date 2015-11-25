@@ -16,5 +16,10 @@ namespace HRGAutoTests
     {
         public Step1() : base("chrome", "preprod", "homePage")
         { }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
     }
 }
