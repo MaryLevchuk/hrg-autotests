@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
-
-
 
 
 namespace Settings
@@ -52,31 +51,24 @@ namespace Settings
             driver.Manage().Window.Maximize();
         }
 
-        public TestSettings(string driver, string env, string pageName)
+        public TestSettings(string driver, string env)
         {
             OpenBrowser(driver);
             this.environment = ConfigurationManager.AppSettings[env];
-            if (pageName.Contains("homePage"))
-            { page = environment; }
-            else
-            { this.page = this.environment + ConfigurationManager.AppSettings[pageName]; }
-            
         }
-        public void OpenPage(string url)
+
+        public void OpenPageByUrl(string url)
         {
             driver.Navigate().GoToUrl(url);
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            
         }
 
-
-
-        [TestFixtureSetUp]
-        public void InitPage()
+        public void OpenPageByName(string pageName)
         {
-            OpenPage(this.page);
+            this.page = pageName.Equals("homePage") ? this.environment : this.environment + ConfigurationManager.AppSettings[pageName];
+            driver.Navigate().GoToUrl(this.page);
         }
-
+                
         [TestFixtureTearDown]
         public void CloseBrowser()
         {

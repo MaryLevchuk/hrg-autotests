@@ -1,16 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-<<<<<<< .merge_file_a14216
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
-=======
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
->>>>>>> .merge_file_a15756
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRGAutoTests", "HRGAutoTests\HRGAutoTests.csproj", "{0B98DF76-9350-4250-B58C-4F8AE42438E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "Pages\Pages.csproj", "{D07085EF-7F3B-4705-84EE-85754DD2C074}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Pages\Models.csproj", "{D07085EF-7F3B-4705-84EE-85754DD2C074}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{3081EF63-A616-490F-9958-34E4F76F2A51}"
 EndProject

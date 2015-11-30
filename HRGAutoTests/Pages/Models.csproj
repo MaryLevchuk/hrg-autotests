@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3081EF63-A616-490F-9958-34E4F76F2A51}</ProjectGuid>
+    <ProjectGuid>{D07085EF-7F3B-4705-84EE-85754DD2C074}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Helpers</RootNamespace>
-    <AssemblyName>Helpers</AssemblyName>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Pages</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -43,7 +43,6 @@
       <HintPath>..\..\..\..\Program Files\Selenium.NET\net40\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\..\..\..\Program Files\Selenium.NET\net40\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
@@ -60,25 +59,17 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Inspiration\Step1.cs" />
-    <Compile Include="Inspiration\Step2.cs" />
-    <Compile Include="Inspiration\Step3.cs" />
-    <Compile Include="ItemActions.cs" />
-    <Compile Include="ItemModels\Footer\Footer.cs" />
-    <Compile Include="ItemModels\Menu\Menu.cs" />
-    <Compile Include="ItemModels\PageObject.cs" />
-    <Compile Include="Locators.cs" />
+    <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{3081ef63-a616-490f-9958-34e4f76f2a51}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Settings\Settings.csproj">
       <Project>{f5fe36ff-9c9c-4950-818f-2ed42e6d4e35}</Project>
       <Name>Settings</Name>
