@@ -33,8 +33,10 @@ namespace Helpers
         public static string ClearAllFiltersBtn = ".grid-filter-clear-all";
         public static string SearchInput = ".filter-search #inspiration-search";
         public static string SearchBtn = ".filter-search-button";
-        public static string FirstArticle = ".grid-item.wow.zoomIn.wow-animated.animated.animated";
-        public static string ArticlesList = ".grid-item-media-wrapper";
+        public static string ArticlesList = ".grid-item.wow.zoomIn.wow-animated.animated.animated";
+        public static string FilteredArticles = ".grid-item.wow.zoomIn.wow-animated.animated.animated[style=\"visibility: visible;\"]";
+        public static string ArticlesUrlsList = ".grid-item-link";
+
         public static string InspirationHeader = ".header-primary";
         public static string InspirationIntro = ".excerpt";
         public static string LastVisibleArticle = ".grid-item.wow.zoomIn.wow-animated.animated.animated:nth-child(5)";

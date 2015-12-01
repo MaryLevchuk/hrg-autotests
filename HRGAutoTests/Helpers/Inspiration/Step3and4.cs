@@ -14,18 +14,19 @@ using Helpers;
 
 namespace Helpers.Inspiration
 {
-    public class Step3 : Step2
+    public class Step3and4 : Step2
     {
-        public Step3() : base()
+        public Step3and4() : base()
         {  }
 
         public IWebElement FindFilterTitleByFilterName(string filterName)
         {
+            
             IWebElement result = null;
             foreach (IWebElement title in FilterTitlesList)
             {
                 string titleString = title.GetAttribute("innerText");
-                //Console.WriteLine(titleString);
+                
                 if (titleString.Contains(filterName))
                 {
                     result = title;
@@ -73,7 +74,6 @@ namespace Helpers.Inspiration
         public string GetFilterColor(string filterName)
         {
             string color = FindFilterTitleByFilterName(filterName).GetAttribute("box-shadow");
-            //Console.WriteLine(color);
             return color;
         }
 

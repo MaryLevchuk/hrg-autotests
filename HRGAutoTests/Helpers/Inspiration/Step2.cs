@@ -23,6 +23,7 @@ namespace Helpers.Inspiration
         public List<IWebElement> FilterTitlesList;
         public List<IWebElement> FilterOptionsList;
         public List<IWebElement> ArticlesList;
+        
 
         public Step2()
         {
@@ -33,6 +34,7 @@ namespace Helpers.Inspiration
             FilterTitlesList = driver.FindElements(By.CssSelector((Locators.FilterTitlesList))).ToList();
             FilterOptionsList = driver.FindElements(By.CssSelector((Locators.FilterOptionsList))).ToList();
             ArticlesList = driver.FindElements(By.CssSelector((Locators.ArticlesList))).ToList();
+            
         }
 
         public IWebElement SelectFieldForItem(string itemName)

@@ -35,16 +35,13 @@ namespace Helpers
 
         public void ScrollThePageToTheIWebElement(IWebElement item)
         {
-            Actions actions = new Actions(driver);
-            actions.MoveToElement(item).Perform();
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", item);
         }
 
         public void ScrollThePageToTheElementByCss(string css)
         {
-            //Actions actions = new Actions(driver);
             IWebElement item = driver.FindElement(By.CssSelector(css));
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", item);
-            //actions.MoveToElement(item).Perform();
         }
 
         public List<int> ParseToIntAndTrim(string[] color_parts)
@@ -77,10 +74,20 @@ namespace Helpers
             return BuildHexString(int_numbers);
         }
 
-        public void WaitUntilLoaded(string css)
+        public void WaitUntilElementLoadedByCss(string css)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(css)));
+        }
+
+        public void WaitUntilFoundItemLoaded(IWebElement item)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement myDynamicElement = wait.Until<IWebElement>((d) =>
+            {
+                return item;
+            });
+
         }
         public void SelectInspirationMenu()
         {

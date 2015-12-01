@@ -26,10 +26,10 @@ namespace HRGAutoTests.InspirationSteps
             action = new ItemActions();
 
             OpenPageByName("homePage");
-            action.WaitUntilLoaded(Locators.Header);
+            action.WaitUntilElementLoadedByCss(Locators.Header);
             
             action.SelectInspirationMenu();
-            action.WaitUntilLoaded(Locators.LastVisibleArticle);
+            action.WaitUntilElementLoadedByCss(Locators.LastVisibleArticle);
             
             step2 = new Step2();
         }

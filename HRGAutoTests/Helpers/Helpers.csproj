@@ -69,7 +69,8 @@
   <ItemGroup>
     <Compile Include="Inspiration\Step1.cs" />
     <Compile Include="Inspiration\Step2.cs" />
-    <Compile Include="Inspiration\Step3.cs" />
+    <Compile Include="Inspiration\Step3and4.cs" />
+    <Compile Include="Inspiration\Step5.cs" />
     <Compile Include="ItemActions.cs" />
     <Compile Include="ItemModels\Footer\Footer.cs" />
     <Compile Include="ItemModels\Menu\Menu.cs" />
