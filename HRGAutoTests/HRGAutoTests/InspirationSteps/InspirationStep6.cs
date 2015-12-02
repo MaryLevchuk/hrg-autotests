@@ -17,14 +17,11 @@ using Models;
 
 namespace HRGAutoTests.InspirationSteps
 {
-    public class InspirationStep5 : TestSettings
+    public class InspirationStep6 : TestSettings
     {
-        public string SelectedArticleUrl;
         public ItemActions action;
         public Step5 step5;
-
-        public InspirationStep5()
-            : base("chrome", "preprod")
+        public InspirationStep6() : base("chrome", "preprod")
         {
             action = new ItemActions();
 
@@ -47,36 +44,33 @@ namespace HRGAutoTests.InspirationSteps
 
             action.ScrollThePageDownToTheEnd();
             Thread.Sleep(1000);
-            
+
             action.ScrollThePageToTheElementByCss(".grid-item.wow.zoomIn.wow-animated.animated.animated");
             Thread.Sleep(1000);
 
             step5.FilteredArticles = step5.GetFilteredArticles();
             step5.ArticlesUrlsList = step5.GetArticlesUrls();
 
-            int articleNumber = step5.GenerateRandomNumber(step5.FilteredArticles.Count);
-            SelectedArticleUrl = step5.GetURLByArticleNumber(articleNumber);
+            step5.SelectArticleFrom(step5.FilteredArticles, step5.GenerateRandomNumber(step5.FilteredArticles.Count));
+            action.WaitUntilElementLoadedByCss(Locators.ArticleBackgroundImg);
 
-            step5.SelectArticleFrom(step5.FilteredArticles, articleNumber);
+            List<IWebElement> relatedArticlesList = step5.GetRelatedArticlesList();
+            step5.SelectArticleFrom(relatedArticlesList, step5.GenerateRandomNumber(relatedArticlesList.Count));
             action.WaitUntilElementLoadedByCss(Locators.ArticleBackgroundImg);
         }
 
         [Test]
-        public void SelectedArticleReturnedResponseOK()
+        public void _RelatedArticlesArePresent()
         {
-            string responseCode = step5.GetResponseCodeByUrl(SelectedArticleUrl);
-            Assert.AreEqual(responseCode, "OK");
-        }
-
-        [Test]
-        public void RelatedArticlesArePresent()
-        {
-            step5.PressViewRelatedTravelSuggestionsLink();
-            action.WaitUntilElementLoadedByCss(Locators.RelatedArticlesList);
-
             List<IWebElement> relatedArticles = step5.GetRelatedArticlesList();
             Assert.Greater(relatedArticles.Count, 2);
         }
 
+        [Test]
+        public void RelatedArticle_OpenedIn_FindATrip_Menu()
+        {
+            string activeMenuItemText = driver.FindElement(By.CssSelector(Locators.ActiveMenuItem)).Text;
+            Assert.AreEqual(activeMenuItemText.ToLower(), "Find a trip".ToLower());
+        }
     }
 }

@@ -71,6 +71,7 @@
     <Compile Include="InspirationSteps\InspirationStep2.cs" />
     <Compile Include="InspirationSteps\InspirationStep3and4.cs" />
     <Compile Include="InspirationSteps\InspirationStep5.cs" />
+    <Compile Include="InspirationSteps\InspirationStep6.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,7 @@ namespace HRGAutoTests.InspirationSteps
 {
     public class InspirationStep2 : TestSettings
     {
+        public IWebElement InspirationHeader;
         public Step2 step2;
         public ItemActions action;
         public InspirationStep2() : base("chrome", "preprod")
@@ -32,13 +33,14 @@ namespace HRGAutoTests.InspirationSteps
             action.WaitUntilElementLoadedByCss(Locators.LastVisibleArticle);
             
             step2 = new Step2();
+            InspirationHeader = driver.FindElement(By.CssSelector(Locators.InspirationHeader));
         }
 
         [TestCase("Header", Result = true)]
         [TestCase("Intro", Result = true)]
         public bool PresentItem(string itemName)
         {
-            return step2.PresenceOfItem(itemName);
+            return step2.IsPresentByName(itemName);
         }
 
         [TestCase("FilterIcons", Result = true)]
@@ -47,23 +49,16 @@ namespace HRGAutoTests.InspirationSteps
         [TestCase("Articles", Result = true)]
         public bool PresentListOfItems(string listName)
         {
-            return step2.PresenceOfItemsList(listName);
+            return step2.ItemsListIsPresent(listName);
         }
 
-        [TestCase("FilterIcons", Result = 4)]
-        [TestCase("FilterTitles", Result = 4)]
-        [TestCase("FilterOptions", Result = 17)]
-        public int AmountOf(string itemsName)
+        [Test]
+        public void GetInspiredMenu_IsActive()
         {
-            return step2.AmountOfItems(itemsName);
+            string activeMenuItemText = driver.FindElement(By.CssSelector(Locators.ActiveMenuItem)).Text;
+            Assert.AreEqual(activeMenuItemText.ToLower(), "Get inspired".ToLower());
         }
 
-        [TestCase("destinations", Result = 6)]
-        [TestCase("seasons", Result = 4)]
-        [TestCase("attractions", Result = 7)]
-        public int AmountOfOptionsForFilter(string filterName)
-        {
-            return step2.AmountOfOptionsOfFilter(filterName);
-        }
+
     }
 }

@@ -91,7 +91,7 @@ namespace Helpers
         }
         public void SelectInspirationMenu()
         {
-            driver.FindElement(By.CssSelector((Locators.ExploreMenuItem))).Click();
+            driver.FindElement(By.CssSelector((Locators.GetInspiredMenuItem))).Click();
         }
     }
 }

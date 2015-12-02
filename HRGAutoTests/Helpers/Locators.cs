@@ -9,22 +9,24 @@ namespace Helpers
     public static class Locators
     {   
         //Menu
-        public static string ExploreMenuItem = ".inspiration";
+        public static string GetInspiredMenuItem = ".inspiration";
        
         public static string MenuPanel = ".drawer";
-        public static string MenuLogo = "#logo";
-        public static string MenuPrimaryItems = ".nav-global-primary li";
-        public static string MenuSecondaryItems = ".nav-global-secondary li";
-        public static string MenuLanguageSelector = ".global-settings-language";
+        public static string Logo = "#logo";
+        public static string PrimaryItems = ".nav-global-primary li";
+        public static string SecondaryItems = ".nav-global-secondary li";
+        public static string LanguageSelector = ".global-settings-language";
+
+        public static string ActiveMenuItem = "a.active";
 
         //Footer
         public static string FooterPanel = ".main-footer";
-        public static string FooterSocialIcons = "a.icon.icon-only";   
-        public static string FooterSocialIconsText = ".footer-social-media-title";
-        public static string FooterInfoList = ".footer-info-list";
-        public static string FooterCopyright = ".footer-info-copyright";
-        public static string FooterLogoListItems = ".footer-logo-list li";
-        public static string FooterArrowUp = ".footer-back-to-top";
+        public static string SocialIcons = "a.icon.icon-only";   
+        public static string SocialIconsText = ".footer-social-media-title";
+        public static string InfoList = ".footer-info-list";
+        public static string Copyright = ".footer-info-copyright";
+        public static string LogoListItems = ".footer-logo-list li";
+        public static string ArrowUp = ".footer-back-to-top";
 
         //InspirationPage
         public static string FilterIconsList = ".inspiration-filter-nav-tab-icon";
@@ -40,7 +42,11 @@ namespace Helpers
         public static string InspirationHeader = ".header-primary";
         public static string InspirationIntro = ".excerpt";
         public static string LastVisibleArticle = ".grid-item.wow.zoomIn.wow-animated.animated.animated:nth-child(5)";
+        public static string ArticleBackgroundImg = ".item.active.top-image-container img";
 
+        //RelatedInspirationArticle
+        public static string ViewRelatedTravelSuggestionsLink = ".icon-right[href=\"#\"]";
+        public static string RelatedArticlesList = ".grid-items.grid-items-single.grid-items-left-align.list li";
 
         //HomePage
         public static string BackgroudImageDiv = ".homepage-bg";

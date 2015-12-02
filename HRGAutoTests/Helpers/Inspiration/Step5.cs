@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-
+using System.Net;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -20,7 +20,7 @@ namespace Helpers.Inspiration
         public List<IWebElement> FilteredArticles;
 
         public ItemActions action;
-        private IWebDriver driver;
+        public IWebDriver driver;
         public Step5() : base()
         {
             driver = TestSettings.driver;
@@ -43,9 +43,9 @@ namespace Helpers.Inspiration
             return new Random().Next(0, upperLimit);
         }
 
-        public void SelectArticleFrom(List<IWebElement> listOfArticles, int randomNumber)
+        public void SelectArticleFrom(List<IWebElement> listOfArticles, int articleNumber)
         {
-                IWebElement article = listOfArticles[randomNumber];
+                IWebElement article = listOfArticles[articleNumber];
                 action.ScrollThePageToTheIWebElement(article);
                 action.WaitUntilFoundItemLoaded(article);
                 article.Click();
@@ -56,7 +56,23 @@ namespace Helpers.Inspiration
             string url = ArticlesUrlsList[articleNumber].GetAttribute("href");
             return url; 
         }
-            
-        
+
+        public void PressViewRelatedTravelSuggestionsLink()
+        {
+            driver.FindElement(By.CssSelector(Locators.ViewRelatedTravelSuggestionsLink)).Click();
+        }
+
+        public List<IWebElement> GetRelatedArticlesList()
+        {
+            return driver.FindElements(By.CssSelector(Locators.RelatedArticlesList)).ToList();
+        }
+
+        public string GetResponseCodeByUrl(string url)
+        {
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
+            return response.StatusCode.ToString();
+
+        }
     }
 }

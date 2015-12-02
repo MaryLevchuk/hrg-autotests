@@ -77,19 +77,19 @@ namespace Helpers.Inspiration
             return field;
         }
 
-        public bool PresenceOfItem(string itemName)
+        public bool IsPresentByName(string itemName)
         {
             IWebElement item = SelectFieldForItem(itemName);
-            return item.GetAttribute("innerText").Count() > 0;
+            return item.Displayed;
         }
         
-        public bool PresenceOfItemsList(string itemsListName)
+        public bool ItemsListIsPresent(string itemsListName)
         {
             List<IWebElement> list = SelectFieldForListOfItems(itemsListName);
             return list.Count > 0;
         }
 
-               public int AmountOfItems(string itemsListName)
+        public int AmountOfItems(string itemsListName)
         {
             List<IWebElement> items = SelectFieldForListOfItems(itemsListName);
             return items.Count;
@@ -113,6 +113,17 @@ namespace Helpers.Inspiration
                 }
             }
             return filterOptions;
+        }
+
+        public bool IsPresentByCss(string css)
+        {
+           IWebElement item = driver.FindElement(By.CssSelector(css));
+           return item.Displayed;
+        }
+
+        public bool IsPresentItem(IWebElement item)
+        {
+            return item.Displayed;
         }
 
 
