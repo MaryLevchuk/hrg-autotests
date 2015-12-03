@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -93,5 +94,15 @@ namespace Helpers
         {
             driver.FindElement(By.CssSelector((Locators.GetInspiredMenuItem))).Click();
         }
+
+        public string GetResponseCodeByUrl(string url)
+        {
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
+            return response.StatusCode.ToString();
+
+        }
+
+        
     }
 }

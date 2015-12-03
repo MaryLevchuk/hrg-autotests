@@ -67,12 +67,12 @@ namespace Helpers.Inspiration
             return driver.FindElements(By.CssSelector(Locators.RelatedArticlesList)).ToList();
         }
 
-        public string GetResponseCodeByUrl(string url)
-        {
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-            HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
-            return response.StatusCode.ToString();
+        //public string GetResponseCodeByUrl(string url)
+        //{
+        //    HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
+        //    HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
+        //    return response.StatusCode.ToString();
 
-        }
+        //}
     }
 }

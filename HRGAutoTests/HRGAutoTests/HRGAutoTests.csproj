@@ -67,11 +67,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HomePageTests.cs" />
     <Compile Include="InspirationSteps\InspirationStep1.cs" />
     <Compile Include="InspirationSteps\InspirationStep2.cs" />
     <Compile Include="InspirationSteps\InspirationStep3and4.cs" />
     <Compile Include="InspirationSteps\InspirationStep5.cs" />
     <Compile Include="InspirationSteps\InspirationStep6.cs" />
+    <Compile Include="OurShipsSteps\OurShipsStep1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +93,7 @@
       <Name>Settings</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

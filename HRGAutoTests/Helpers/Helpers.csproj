@@ -74,11 +74,13 @@
     <Compile Include="ItemActions.cs" />
     <Compile Include="ItemModels\Footer\Footer.cs" />
     <Compile Include="ItemModels\Menu\Menu.cs" />
-    <Compile Include="ItemModels\PageObject.cs" />
+    <Compile Include="HomePageStep.cs" />
     <Compile Include="Locators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="OurShips\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Settings\Settings.csproj">
       <Project>{f5fe36ff-9c9c-4950-818f-2ed42e6d4e35}</Project>

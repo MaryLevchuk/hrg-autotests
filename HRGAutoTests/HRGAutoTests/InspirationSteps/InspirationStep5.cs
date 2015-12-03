@@ -11,9 +11,9 @@ using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using Settings;
 using Helpers.Inspiration;
-using Helpers.ItemModels;
+//using Helpers.ItemModels;
 using Helpers;
-using Models;
+//using Models;
 
 namespace HRGAutoTests.InspirationSteps
 {
@@ -64,7 +64,7 @@ namespace HRGAutoTests.InspirationSteps
         [Test]
         public void SelectedArticleReturnedResponseOK()
         {
-            string responseCode = step5.GetResponseCodeByUrl(SelectedArticleUrl);
+            string responseCode = action.GetResponseCodeByUrl(SelectedArticleUrl);
             Assert.AreEqual(responseCode, "OK");
         }
 
