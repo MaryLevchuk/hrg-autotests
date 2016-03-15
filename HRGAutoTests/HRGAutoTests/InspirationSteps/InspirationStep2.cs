@@ -58,7 +58,5 @@ namespace HRGAutoTests.InspirationSteps
             string activeMenuItemText = driver.FindElement(By.CssSelector(Locators.ActiveMenuItem)).Text;
             Assert.AreEqual(activeMenuItemText.ToLower(), "Get inspired".ToLower());
         }
-
-
     }
 }

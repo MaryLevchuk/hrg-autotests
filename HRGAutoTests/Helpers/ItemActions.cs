@@ -103,6 +103,33 @@ namespace Helpers
 
         }
 
-        
+        public IWebElement FindItemByName(string itemName)
+        {
+            var locator = typeof(Locators).GetField(itemName).GetValue(typeof(Locators));
+            return driver.FindElement(By.CssSelector(locator.ToString()));
+        }
+
+        public List<IWebElement> FindItemsByCommonName(string itemsScopeName)
+        {
+            var locator = typeof(Locators).GetField(itemsScopeName).GetValue(typeof(Locators));
+            return driver.FindElements(By.CssSelector(locator.ToString())).ToList();
+        }
+
+        public IWebElement FindElementByCss(string css)
+        {
+
+            return driver.FindElement(By.CssSelector(css));
+        }
+
+        public List<IWebElement> FindElementsByCss(string css)
+        {
+            return driver.FindElements(By.CssSelector(css)).ToList();
+        }
+
+        public object GetClassField(string field)
+        {
+            return GetType().GetField(field).GetValue(this);
+        }
+
     }
 }

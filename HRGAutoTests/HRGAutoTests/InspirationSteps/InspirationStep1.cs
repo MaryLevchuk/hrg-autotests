@@ -22,8 +22,15 @@ namespace HRGAutoTests.InspirationSteps
         public InspirationStep1() : base("chrome", "preprod")
         {
             OpenPageByName("homePage");
-            step1 = new Step1();
-         }
+
+            var stringList = new List<string>();
+
+            stringList.Add("first");
+            stringList.Add("second");
+
+            var items = new List<IWebElement>();
+            items.Add(null);
+        }
 
         [Test]
         public void BackgroudImage_IsPresent()

@@ -14,6 +14,9 @@ using Helpers;
 
 namespace Helpers.Inspiration
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Step2
     {
         private IWebDriver driver;
@@ -24,7 +27,9 @@ namespace Helpers.Inspiration
         public List<IWebElement> FilterOptionsList;
         public List<IWebElement> ArticlesList;
         
-
+        /// <summary>
+        /// Must be called ... only
+        /// </summary>
         public Step2()
         {
             driver = TestSettings.driver;

@@ -79,7 +79,7 @@ namespace HRGAutoTests
             [TestCase("ArrowUp", Result = true)]
             public bool PresentItem(string itemName)
             {
-                return homepage.FindItemByName(itemName).Displayed;
+                return action.FindItemByName(itemName).Displayed;
             }
 
             [TestCase("PrimaryItems", Result = true)]
@@ -90,7 +90,7 @@ namespace HRGAutoTests
             public bool PresentItems(string itemsName)
             {
                 bool result = true;
-                List<IWebElement> items = homepage.FindElementsByCss(itemsName);
+                List<IWebElement> items = action.FindElementsByCss(itemsName);
                 foreach (IWebElement item in items)
                 {
                     result = result && item.Displayed;
@@ -101,7 +101,7 @@ namespace HRGAutoTests
             public bool Items_Displayed(string itemsName)
             {
                 bool result = true;
-                var items = homepage.FindItemsByCommonName(itemsName);
+                var items = action.FindItemsByCommonName(itemsName);
                 if (items[0].GetAttribute("innerText").Contains("Your booking"))
                 {
                     items.RemoveAt(0);
